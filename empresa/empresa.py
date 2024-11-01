@@ -2,20 +2,13 @@ import pickle
 import numpy as np
 import pandas as pd
 import json
-# from sklearn.preprocessing import StandardScaler
-# from sklearn.manifold import TSNE
-# from sklearn.cluster import KMeans
+import joblib
 
 class CustomerClusteringModel:
-    def __init__(self):
-        # Carrega os modelos e objetos necessários do processo de treinamento
-        with open('scaler/scalers.pkl', 'rb') as file:
-            self.scaler = pickle.load(file)
-        with open('model/kmeans_model.pkl', 'rb') as file:
-            self.kmeans = pickle.load(file)
-        with open('reducer/umap_reducer.pkl', 'rb') as file:
-            self.umap = pickle.load(file)
-
+    def __init__(self,scaler, kmeans, umap):
+        self.scaler = scaler
+        self.kmeans = kmeans
+        self.umap = umap
 
     def preprocess_data(self, df2):
         """Pré-processa os dados usando o scaler carregado."""
