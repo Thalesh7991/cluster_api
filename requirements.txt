@@ -5,3 +5,4 @@ pandas==2.1.0
 requests==2.31.0
 gunicorn==22.0.0
 umap-learn==0.5.5
+numba==0.58.1
