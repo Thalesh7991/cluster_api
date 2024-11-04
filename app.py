@@ -1,18 +1,9 @@
 from flask import Flask, request, Response
 import os
 import pandas as pd
-import json
-import pickle
-import joblib
 
 from empresa.empresa import CustomerClusteringModel
 
-
-with open('scaler/scalers.pkl', 'rb') as file:
-    scaler = pickle.load(file)
-with open('model/kmeans_model.pkl', 'rb') as file:
-    kmeans = pickle.load(file)
-umap = joblib.load('reducer/umap_reducer.pkl')
 
 app = Flask(__name__)
 
@@ -26,7 +17,7 @@ def emprestimo_predict():
         else:
             test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())
         
-        pipeline = CustomerClusteringModel(scaler, kmeans, umap)
+        pipeline = CustomerClusteringModel()
 
         df_predict = pipeline.predict_cluster(test_raw)
 
