@@ -10,6 +10,7 @@ class CustomerClusteringModel:
         """Pipeline completo para prever o cluster de novos dados."""
 
         # Passo 3: Previsão de cluster
+        data = data.astype('float64')
         clusters = self.kmeans.predict(data)
         
         return json.dumps(clusters.tolist())
