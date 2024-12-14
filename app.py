@@ -21,6 +21,7 @@ def emprestimo_predict():
 
         test_raw['embedding_x'] = test_raw['embedding_x'].astype('float64')
         test_raw['embedding_y'] = test_raw['embedding_y'].astype('float64')
+        
 
         df_predict = pipeline.predict_cluster(test_raw)
 
